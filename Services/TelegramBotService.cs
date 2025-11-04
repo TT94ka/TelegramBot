@@ -1,6 +1,9 @@
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using TelegramBot.Interfaces;
+using Telegram.Bot.Polling;
+using Telegram.Bot.Types.Enums;
+
 
 namespace TelegramBot.Services
 {
@@ -8,6 +11,24 @@ namespace TelegramBot.Services
     {
         private readonly ITelegramBotClient _botClient;
 
+        public void Start()
+        {
+            var cancellationToken = new CancellationTokenSource().Token;
+
+            var receiverOptions = new ReceiverOptions
+            {
+                AllowedUpdates = Array.Empty<UpdateType>() // получаем все типы обновлений
+            };
+
+            _botClient.StartReceiving(
+                updateHandler: HandleUpdateAsync,
+                errorHandler: HandleErrorAsync,
+                receiverOptions: receiverOptions,
+                cancellationToken: cancellationToken
+            );
+
+            Console.WriteLine("✅ Бот запущен в режиме Polling");
+        }
         public TelegramBotService(IConfiguration config)
         {
             var token = config["Telegram:Token"]!;
@@ -18,7 +39,7 @@ namespace TelegramBot.Services
 
         }
 
-        public async Task HandleUpdateAsync(Update update)
+        public async Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken token)
         {
             if (update.Message?.Text == null) return;
 
@@ -26,21 +47,36 @@ namespace TelegramBot.Services
             var messageText = update.Message.Text;
 
             if (messageText.StartsWith("/start"))
-                await HandleStartCommandAsync(chatId);
+                await  HandleStartCommandAsync(chatId);
             else if (messageText.StartsWith("/addexpense"))
                 await HandleAddExpenseAsync(chatId, messageText);
             else if (messageText.StartsWith("/summary"))
                 await HandleSummaryCommandAsync(chatId);
             else
                 await SendMessageAsync(chatId, "❓ Unknown command. Retry /start or /help");
+
+            if (update.Message?.Text == null) return;
+
+
+            Console.WriteLine($"📩 Получено сообщение: {messageText}");
+
+            if (messageText.StartsWith("/start"))
+                await SendMessageAsync(chatId, "👋 Привет! Я бот учёта расходов.");
+            else
+                await SendMessageAsync(chatId, "❓ Неизвестная команда.");
+
+
+        }
+
+        public Task HandleErrorAsync(ITelegramBotClient client, Exception exception, HandleErrorSource source, CancellationToken token)
+        {
+            Console.WriteLine($"⚠️ Error: {exception.Message}");
+            return Task.CompletedTask;
         }
 
         public async Task SendMessageAsync(long chatId, string message)
         {
-            await _botClient.SendMessage(
-    chatId: chatId,
-    text: message
-);
+            await _botClient.SendMessage(chatId, message);
         }
 
         public async Task HandleStartCommandAsync(long chatId)
@@ -78,6 +114,11 @@ namespace TelegramBot.Services
             // TODO: получить данные из БД
             var summary = "💰 Income: 0 BYN\n💸 Expense: 0 BYN\n📈 Balance: 0 BYN";
             await SendMessageAsync(chatId, summary);
+        }
+
+        public Task HandleUpdateAsync(Update update)
+        {
+            throw new NotImplementedException();
         }
     }
 }

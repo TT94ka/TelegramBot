@@ -1,27 +1,13 @@
 using TelegramBot.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddSingleton<ITelegramBotService, TelegramBotService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+// Запускаем Polling
+var botService = app.Services.GetRequiredService<ITelegramBotService>();
+botService.Start();
 
-builder.Services.AddSingleton<ITelegramBotService, TelegramBotService>();
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseRouting();
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

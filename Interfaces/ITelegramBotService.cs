@@ -1,17 +1,18 @@
 using Telegram.Bot;
+using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 
 namespace TelegramBot.Interfaces
 {
     public interface ITelegramBotService
     {
+        Task HandleErrorAsync(ITelegramBotClient client, Exception exception, HandleErrorSource source, CancellationToken token);
+        /// <summary>
+        /// Обработка ошибок
+        /// </summary>
+        Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken token);
         /// <summary>
         /// Обработка входящего обновления от Telegram (Webhook или Polling)
-        /// </summary>
-        Task HandleUpdateAsync(Update update);
-
-        /// <summary>
-        /// Отправка текстового сообщения пользователю
         /// </summary>
         Task SendMessageAsync(long chatId, string message);
 
@@ -29,5 +30,12 @@ namespace TelegramBot.Interfaces
         /// Обработка команды /summary
         /// </summary>
         Task HandleSummaryCommandAsync(long chatId);
+        /// <summary>
+        /// 
+        /// </summary>
+        void Start();
+        /// <summary>
+        /// 
+        /// </summary>
     }
 }
