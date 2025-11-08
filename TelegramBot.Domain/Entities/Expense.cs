@@ -1,3 +1,4 @@
+namespace TelegramBot.Domain.Entities;
 public class Expense
 {
     public int Id { get; set; }

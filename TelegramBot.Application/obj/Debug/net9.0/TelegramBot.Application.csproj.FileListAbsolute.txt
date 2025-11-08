@@ -1,0 +1,16 @@
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\bin\Debug\net9.0\TelegramBot.Application.deps.json
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\bin\Debug\net9.0\TelegramBot.Application.dll
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\bin\Debug\net9.0\TelegramBot.Application.pdb
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\bin\Debug\net9.0\TelegramBot.Domain.dll
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\bin\Debug\net9.0\TelegramBot.Domain.pdb
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\TelegramBot.Application.csproj.AssemblyReference.cache
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\TelegramBot.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\TelegramBot.Application.AssemblyInfoInputs.cache
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\TelegramBot.Application.AssemblyInfo.cs
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\TelegramBot.Application.csproj.CoreCompileInputs.cache
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\TelegramBot.Application.sourcelink.json
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\Telegram.91EA28E5.Up2Date
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\TelegramBot.Application.dll
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\refint\TelegramBot.Application.dll
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\TelegramBot.Application.pdb
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Application\obj\Debug\net9.0\ref\TelegramBot.Application.dll

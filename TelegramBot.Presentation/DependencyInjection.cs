@@ -1,32 +1,32 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using TelegramBot.Infrastructure.Data;
-using TelegramBot.Infrastructure.Data.Repositories;
-using TelegramBot.Infrastructure.Telegram;
-using TelegramBot.Application.Services;
-using TelegramBot.Domain.Interfaces;
+using Telegram.Bot;
+using TelegramBot.Application.Interfaces;
 
 namespace TelegramBot.Presentation
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddProjectServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddPresentation(this IServiceCollection services, IConfiguration config)
         {
             // PostgreSQL через EF Core
-            services.AddDbContext<ExpenseDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("Postgres")));
+            //services.AddDbContext<ExpenseDbContext>(options =>
+            //    options.UseNpgsql(configuration.GetConnectionString("Postgres")));
 
             // Репозитории
-            services.AddScoped<IExpenseRepository, ExpenseRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            //services.AddScoped<IExpenseRepository, ExpenseRepository>();
+            //services.AddScoped<IUserRepository, UserRepository>();
 
             // Сервисы бизнес-логики
-            services.AddScoped<ExpenseService>();
-            services.AddScoped<UserService>();
+            //services.AddScoped<ExpenseService>();
+            //services.AddScoped<UserService>();
+            services.AddScoped<ITelegramBotService, TelegramBotService>();
+            //services.AddScoped<IExpenseService, ExpenseService>();
+            //services.AddScoped<IExpenseRepository, ExpenseRepository>();
+            services.AddScoped<IBotUpdateHandler, BotUpdateHandler>();
 
-            // Telegram-бот через Polling
-            services.AddHostedService<TelegramBotService>();
+            var token = config.GetRequiredSection("Telegram").GetValue<string>("Token");
+            services.AddSingleton<ITelegramBotClient>(provider => new TelegramBotClient(token!));
 
             return services;
         }

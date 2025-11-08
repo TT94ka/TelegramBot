@@ -1,16 +1,38 @@
-
-using TelegramBot.Presentation; // 👈 подключаем пространство имён
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using TelegramBot.Application.Interfaces;
+using TelegramBot.Infrastructure;
+using TelegramBot.Application;
+using TelegramBot.Presentation;
 
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSingleton<TelegramBotService, TelegramBotService>();
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureAppConfiguration((context, config) =>
+    {
+        config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+        config.AddEnvironmentVariables();
+    })
+    .ConfigureServices((context, services) =>
+    {
+        var configuration = context.Configuration;
 
-var app = builder.Build();
+        // Подключаем слои
+        services.AddApplication();     // IServiceCollection расширение из Application
+        services.AddInfrastructure(configuration); // IServiceCollection расширение из Infrastructure
+        services.AddPresentation(configuration);    // если есть Presentation-specific DI
+        //services.AddHostedService<TelegramBotService>();
+        // Логирование
+        services.AddLogging(builder =>
+        {
+            builder.AddConsole();
+            builder.SetMinimumLevel(LogLevel.Information);
+        });
+    })
+    .Build();
 
-// Запускаем Polling
-var botService = app.Services.GetRequiredService<TelegramBotService>();
+// Получаем TelegramBotService и запускаем
+var botService = host.Services.GetRequiredService<ITelegramBotService>();
 botService.Start();
-app.Run();
+
+await host.RunAsync();

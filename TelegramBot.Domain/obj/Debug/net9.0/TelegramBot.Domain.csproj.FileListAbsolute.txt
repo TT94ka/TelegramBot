@@ -1,0 +1,12 @@
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\bin\Debug\net9.0\TelegramBot.Domain.deps.json
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\bin\Debug\net9.0\TelegramBot.Domain.dll
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\bin\Debug\net9.0\TelegramBot.Domain.pdb
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\obj\Debug\net9.0\TelegramBot.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\obj\Debug\net9.0\TelegramBot.Domain.AssemblyInfoInputs.cache
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\obj\Debug\net9.0\TelegramBot.Domain.AssemblyInfo.cs
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\obj\Debug\net9.0\TelegramBot.Domain.csproj.CoreCompileInputs.cache
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\obj\Debug\net9.0\TelegramBot.Domain.sourcelink.json
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\obj\Debug\net9.0\TelegramBot.Domain.dll
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\obj\Debug\net9.0\refint\TelegramBot.Domain.dll
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\obj\Debug\net9.0\TelegramBot.Domain.pdb
+C:\Users\alesi\OneDrive\Документы\My Projects\TelegramBot\TelegramBot.Domain\obj\Debug\net9.0\ref\TelegramBot.Domain.dll
